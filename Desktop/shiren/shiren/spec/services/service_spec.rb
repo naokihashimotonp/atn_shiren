@@ -68,5 +68,81 @@ RSpec.describe Service do
     expect(service.web_app_judge(cards)).to eq("high_card")
   end
 
+  it "straight__flush_score" do
+    service = Service.new
+    hand    = "straight_flush"
+    expect(service.score?(hand)).to eq(9)
+  end
+
+  it "four_of_a_kind_score" do
+    service = Service.new
+    hand    = "four_of_a_kind"
+    expect(service.score?(hand)).to eq(8)
+  end
+
+  it "full_house_score" do
+    service = Service.new
+    hand    = "full_house"
+    expect(service.score?(hand)).to eq(7)
+  end
+
+  it "flush_score" do
+    service = Service.new
+    hand    = "flush"
+    expect(service.score?(hand)).to eq(6)
+  end
+
+  it "straight_score" do
+    service = Service.new
+    hand    = "straight"
+    expect(service.score?(hand)).to eq(5)
+  end
+
+  it "three_of_a_kind_score" do
+    service = Service.new
+    hand    = "three_of_a_kind"
+    expect(service.score?(hand)).to eq(4)
+  end
+
+  it "two_pairs_score" do
+    service = Service.new
+    hand    = "two_pairs"
+    expect(service.score?(hand)).to eq(3)
+  end
+
+  it "one_pair_score" do
+    service = Service.new
+    hand    = "one_pair"
+    expect(service.score?(hand)).to eq(2)
+  end
+
+  it "high_card_score" do
+    service = Service.new
+    hand    = "high_card"
+    expect(service.score?(hand)).to eq(1)
+  end
+
+  it "best?" do
+
+    best_hand =
+
+  end
+
+  # it "score" do
+  #   service = Service.new
+  #   # hands_and_scores = [["straight", "four_of_a_kind"], [9, 8]]
+  #   hands            = ["straight", "four_of_a_kind"]
+  #   scores           = [9, 8]
+  #   numbers          = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+  #   hands_and_scores = hands.zip(scores)
+  #   numbers.each do |n|
+  #     hand_and_score = hands_and_scores[n]
+  #     hand           = hand_and_score[0]
+  #     score          = hand_and_score[0]
+  #     expect(service.score?(hand)).to eq(score)
+  #   end
+  #   # hands_and_scores.each {|hand, score|
+  #   #   expect(service.score?(hand)).to eq(score)}
+  # end
 
 end

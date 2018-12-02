@@ -247,7 +247,7 @@ class Service
   end
 
   def score?(hand)
-    if hand == "straight"
+    if hand == "straight_flush"
       return score = 9
     elsif hand == "four_of_a_kind"
       return score = 8

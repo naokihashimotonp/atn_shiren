@@ -8,13 +8,6 @@ RSpec.describe API::V1, :type => :request do
       "CONTENT_TYPE" => "application/json"
     }
 
-    # let(:json_body) do
-    #   '{ "cards" => [
-    #   "H1 H13 H12 H11 H10",
-    #   "H9 C9 S9 H2 C2",
-    #   "C13 D12 C11 H8 H7"
-    # ] }'
-    # end
 
     request = '{
       "cards": ["H1 H13 H12 H11 H10", "H9 C9 S9 H2 C2", "C13 D12 C11 H8 H7"]
@@ -39,20 +32,7 @@ RSpec.describe API::V1, :type => :request do
     }
 
     api_response = JSON.generate(api_response)
-
-
-    # request = JSON.parse(request)
     post "/api/v1", request, headers
-
-
-    # service = Service.new
-    # response = service.create_response(params)
-
-    # body = JSON.parse(response.body)
-
-    # service_res = service.create_response
-    # service_res = JSON.generate(service_res)
-    
     expect(api_response).to eq(response.body)
 
   end
