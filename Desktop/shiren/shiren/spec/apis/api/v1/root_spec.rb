@@ -20,16 +20,40 @@ RSpec.describe API::V1, :type => :request do
       "cards": ["H1 H13 H12 H11 H10", "H9 C9 S9 H2 C2", "C13 D12 C11 H8 H7"]
     }'
 
+    api_response = {
+      "card1": {
+        "card": "H1 H13 H12 H11 H10",
+        "hand": "flush",
+        "best": false
+      },
+      "card2": {
+        "card": "H9 C9 S9 H2 C2",
+        "hand": "full_house",
+        "best": true
+      },
+      "card3": {
+        "card": "C13 D12 C11 H8 H7",
+        "hand": "high_card",
+        "best": false
+      }
+    }
+
+    api_response = JSON.generate(api_response)
+
 
     # request = JSON.parse(request)
     post "/api/v1", request, headers
 
 
-    service = Service.new
+    # service = Service.new
     # response = service.create_response(params)
 
     # body = JSON.parse(response.body)
-    expect(service.create_response).to eq(service.create_response)
+
+    # service_res = service.create_response
+    # service_res = JSON.generate(service_res)
+    
+    expect(api_response).to eq(response.body)
 
   end
 

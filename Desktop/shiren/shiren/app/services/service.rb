@@ -33,9 +33,8 @@ class Service
   # APIのレスポンスを作るメソッド
   def create_response(params)
 
-
     # カードの情報を受け取る
-    cards = params[:cards]
+    cards = params["cards"]
 
     cards1 = cards[0]
     cards2 = cards[1]
@@ -88,7 +87,6 @@ class Service
 
       }
     }
-
     return result
   end
 
