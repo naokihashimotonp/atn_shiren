@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get "/", to: "judge#top"
   post "/card_post", to: "judge#card_post"
+  mount API::V1::Root => '/api'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

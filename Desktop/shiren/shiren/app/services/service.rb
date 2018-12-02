@@ -1,13 +1,26 @@
 class Service
-  
+
+  # 正規表現でバリデーション
   def valid?(params)
     pattern = Regexp.new("^[HSDC]{1}([1-9]{1}|1[0-3]{1})[ ]{1}[HSDC]{1}([1-9]{1}|1[0-3]{1})[ ]{1}[HSDC]{1}([1-9]{1}|1[0-3]{1})[ ]{1}[HSDC]{1}([1-9]{1}|1[0-3]{1})[ ]{1}[HSDC]{1}([1-9]{1}|1[0-3]{1})$")
     cards   = params
     if pattern === cards
       true
+    else
+      false
     end
   end
 
+  # バリデーションの真偽値を元に条件分岐
+  def cards_conditional_branch(cards)
+    if valid?(cards)
+      web_app_judge(cards)
+    else
+      "大文字のHかSかDかCと半角の1~13までの値をご入力ください。"
+    end
+  end
+
+  # 役の判定を返すメソッド
   def web_app_judge(cards)
     splited_cards = split(cards)
     numbers       = numbers(splited_cards)
@@ -17,15 +30,20 @@ class Service
   end
 
 
+  # APIのレスポンスを作るメソッド
   def create_response(params)
 
+
     # カードの情報を受け取る
-    cards               = Card.create(card: params[:cards])
-    sophisticated_cards = cards.card.delete("\",[,]")
-    cards_array         = sophisticated_cards.split
-    splited_cards1      = cards_array.take(5)
-    splited_cards2      = cards_array.drop(5).take(5)
-    splited_cards3      = cards_array.drop(10)
+    cards = params[:cards]
+
+    cards1 = cards[0]
+    cards2 = cards[1]
+    cards3 = cards[2]
+
+    splited_cards1 = cards1.split
+    splited_cards2 = cards2.split
+    splited_cards3 = cards3.split
 
     numbers1 = numbers(splited_cards1)
     numbers2 = numbers(splited_cards2)
@@ -53,18 +71,18 @@ class Service
 
     result = {
       "card1" => {
-        "card" => splited_cards1,
+        "card" => cards1,
         "hand" => porker_hand1,
         "best" => best_hand[0]
       },
       "card2" => {
-        "card" => splited_cards2,
+        "card" => cards2,
         "hand" => porker_hand2,
         "best" => best_hand[1]
 
       },
       "card3" => {
-        "card" => splited_cards3,
+        "card" => cards3,
         "hand" => porker_hand3,
         "best" => best_hand[2]
 
