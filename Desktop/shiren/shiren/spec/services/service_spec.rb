@@ -123,7 +123,7 @@ RSpec.describe Service do
   end
 
   it "best?_all_different" do
-    # 全て異なるスコアの場合
+    # 全て異なる役の場合
     service = Service.new
     score1  = 9
     score2  = 8
@@ -131,6 +131,33 @@ RSpec.describe Service do
     expect(service.best?(score1, score2, score3)).to eq(best_hand = [true, false, false])
   end
 
+  it "best?_two_same_pattern1" do
+    # 2つの役が同じ∧残りの1つの役よりも強いの場合
+    service = Service.new
+    score1  = 9
+    score2  = 9
+    score3  = 7
+    expect(service.best?(score1, score2, score3)).to eq(best_hand = [true, true, false])
+  end
+
+  it "best__two_same_pattern2" do
+    # 2つの役が同じ∧残りの1つの役よりも弱いの場合
+    service = Service.new
+    score1  = 9
+    score2  = 8
+    score3  = 8
+    expect(service.best?(score1, score2, score3)).to eq(best_hand = [true, false, false])
+  end
+
+
+  it "best__all_same" do
+    # 全て同じ役の場合
+    service = Service.new
+    score1  = 9
+    score2  = 9
+    score3  = 9
+    expect(service.best?(score1, score2, score3)).to eq(best_hand = [true, true, true])
+  end
 
   # it "score" do
   #   service = Service.new

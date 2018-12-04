@@ -285,7 +285,7 @@ class Service
     elsif score2 < score3 and score3 == score1
       return best_hand[0] = true, best_hand[1] = false, best_hand[2] = true
     elsif score3 < score1 and score1 == score2
-      return best_hand[0] = true, best_hand[1] = false, best_hand[2] = false
+      return best_hand[0] = true, best_hand[1] = true, best_hand[2] = false
     elsif score1 < score2 and score2 < score3
       return best_hand[0] = false, best_hand[1] = false, best_hand[2] = true
     elsif score1 < score3 and score3 < score2
