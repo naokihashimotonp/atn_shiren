@@ -31,8 +31,10 @@ RSpec.describe API::V1, :type => :request do
       }
     }
 
+    # ハッシュのjson化
     api_response = JSON.generate(api_response)
     post "/api/v1", request, headers
+    
     expect(api_response).to eq(response.body)
 
   end

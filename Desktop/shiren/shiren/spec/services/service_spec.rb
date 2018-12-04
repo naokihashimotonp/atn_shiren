@@ -158,22 +158,5 @@ RSpec.describe Service do
     score3  = 9
     expect(service.best?(score1, score2, score3)).to eq(best_hand = [true, true, true])
   end
-
-  # it "score" do
-  #   service = Service.new
-  #   # hands_and_scores = [["straight", "four_of_a_kind"], [9, 8]]
-  #   hands            = ["straight", "four_of_a_kind"]
-  #   scores           = [9, 8]
-  #   numbers          = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-  #   hands_and_scores = hands.zip(scores)
-  #   numbers.each do |n|
-  #     hand_and_score = hands_and_scores[n]
-  #     hand           = hand_and_score[0]
-  #     score          = hand_and_score[0]
-  #     expect(service.score?(hand)).to eq(score)
-  #   end
-  #   # hands_and_scores.each {|hand, score|
-  #   #   expect(service.score?(hand)).to eq(score)}
-  # end
-
+  
 end

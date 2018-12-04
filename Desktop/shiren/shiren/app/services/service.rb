@@ -68,6 +68,7 @@ class Service
 
     best_hand = best?(score1, score2, score3)
 
+
     result = {
       "card1" => {
         "card" => cards1,
@@ -272,6 +273,7 @@ class Service
 
   def best?(score1, score2, score3)
     best_hand = []
+    # 全てスコアが異なる場合、同じスコアの2つが大きい場合、同じスコアの2つのが小さい場合、全てスコアが同じ場合
     if score1 == score2 and score2 == score3
       return best_hand[0] = true, best_hand[1] = true, best_hand[2] = true
     elsif score1 == score2 and score2 < score3
