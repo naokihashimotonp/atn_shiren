@@ -122,11 +122,15 @@ RSpec.describe Service do
     expect(service.score?(hand)).to eq(1)
   end
 
-  it "best?" do
-
-    best_hand =
-
+  it "best?_all_different" do
+    # 全て異なるスコアの場合
+    service = Service.new
+    score1  = 9
+    score2  = 8
+    score3  = 7
+    expect(service.best?(score1, score2, score3)).to eq(best_hand = [true, false, false])
   end
+
 
   # it "score" do
   #   service = Service.new
